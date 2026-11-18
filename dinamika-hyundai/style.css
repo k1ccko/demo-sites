@@ -47,3 +47,25 @@
 .back-to-top:hover{color:var(--accent);border-color:var(--accent);background:rgb(16 185 129 / .06)}
 @media(max-width:767px){.principle-number{font-size:64px}.contact-panel{grid-template-columns:minmax(0,1fr)}.site-footer{grid-template-columns:1fr auto;gap:24px}.footer-copyright{grid-column:1 / -1;grid-row:2}.footer-brand{font-size:12px}.footer-brand .brand-sub{font-size:6px}.back-to-top{padding:10px 12px;gap:8px}}
 @media(max-width:420px){.principle-number{font-size:52px}.footer-brand{gap:8px}.footer-brand .brand-symbol{width:28px;height:28px}}
+
+@media (max-width: 768px) {
+  .principle {
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    padding: 24px 0 !important;
+    border-bottom: none !important; /* Убрали полоски */
+  }
+  .principle-number {
+    position: static !important;
+    font-size: 48px !important;
+    line-height: 1 !important;
+    opacity: 0.4 !important; /* Сделали цифры более заметными */
+    margin-bottom: 8px !important;
+    display: block !important;
+  }
+  .principle > div {
+    padding-left: 0 !important;
+    z-index: 1 !important;
+  }
+}
