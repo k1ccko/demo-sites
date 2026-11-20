@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f5f5f4">
+  <title>Автомакс — автосервис в Луга</title>
+  <script>
+    window.onload = function() { window.scrollTo(0, 0); };
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      preloader.classList.add('opacity-0');
+      window.setTimeout(() => {
+        preloader.classList.add('hidden');
+        window.scrollTo(0, 0);
+      }, 500);
+    });
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap">
+  <script defer src="https://cdn.tailwindcss.com" onload="tailwind.config = { corePlugins: { preflight: false } }"></script>
+  <link rel="stylesheet" href="style.css">
+  <noscript><style>#preloader { display: none; }</style></noscript>
+</head>
+<body class="antialiased" id="top">
+  <div id="preloader" role="status" class="fixed inset-0 z-[9999] bg-[#F5F5F4] flex flex-col items-center justify-center transition-opacity duration-500">
+    <div aria-hidden="true" class="preloader-spinner w-12 h-12 border-4 border-[#059669] border-t-transparent rounded-full animate-spin mb-4"></div>
+    <div class="preloader-label text-[#1C1917] font-bold tracking-widest text-sm uppercase">Загрузка...</div>
+  </div>
+  <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="icon-engine" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" d="M3 9h4l3-4h8l3 4h4v13h-4l-2-3H9l-3-4H3z M1 8v9m9-15h9m-5 0v3m10 7h4v7h-4"/></symbol>
+    <symbol id="icon-electric" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" d="m16 1-12 16h9l-2 10 13-17h-10z"/></symbol>
+    <symbol id="icon-suspension" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" d="m7 1 4 4m10 17 4 4M10 6l9-1-9 8 12-3-10 9 10-3-6 6m-7-17-3 3 12 15 4-3"/></symbol>
+    <symbol id="icon-brakes" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" d="M23 13a10 10 0 1 1-10-10 M16 2l6 2 4 5-4 4-3-5-5-2z M16 14a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></symbol>
+    <symbol id="icon-tires" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" d="M25 14a11 11 0 1 1-22 0 11 11 0 0 1 22 0z M20 14a6 6 0 1 1-12 0 6 6 0 0 1 12 0z M14 4v3m9 7h-3m-6 9v-3M5 14h3"/></symbol>
+    <symbol id="icon-exhaust" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" d="m2 19 5-3m11-7 5-4h4 M6 16l10-8 6 7-10 8z m15-3 4-3"/></symbol>
+    <symbol id="icon-to" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" d="M19 3a7 7 0 0 0-8 9L3 20a3 3 0 0 0 5 5l9-9a7 7 0 0 0 8-9l-5 5-4-4z"/></symbol>
+    <symbol id="icon-oil" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" d="M14 2C11 8 5 13 5 18a9 9 0 0 0 18 0c0-5-6-10-9-16z M9 18a5 5 0 0 0 5 5"/></symbol>
+    <symbol id="icon-timing" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" d="M5 9a6 6 0 0 1 10-5l9 12a6 6 0 0 1-10 7L5 12z M12 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z M21 19a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></symbol>
+    <symbol id="icon-body" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" d="m2 18 1-5 4-1 4-6h7l5 6 3 2v6h-3m-17 0H2v-2m8 2h8M9 12h11 M10 20a2 2 0 1 1-4 0 2 2 0 0 1 4 0z M23 20a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></symbol>
+  </defs></svg>
+  <div id="reading-progress" aria-hidden="true"></div>
+  <div id="cursor-dot" aria-hidden="true" hidden></div>
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="topline w-full"><div class="wrap max-w-[1400px] mx-auto px-4 md:px-8"><span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z M12 6v6l4 2"/></svg> Ежедневно 09:00-20:00</span><span>Демо-концепт, не официальный сайт</span></div></div>
+  <header class="header w-full"><div class="wrap max-w-[1400px] mx-auto px-4 md:px-8"><div class="header-row">
+    <a href="#top" class="brand" aria-label="Автомакс — на главную"><svg viewBox="0 0 36 32" aria-hidden="true"><path d="M10 2h7L7 30H0Zm10 7h7l-7.5 21h-7Zm10 7h6l-5 14h-6Z"/></svg><span>Автомакс<small></small></span></a>
+    <nav class="desktop-nav" aria-label="Основное меню"><a href="#services">Услуги</a><a href="#diagnostics">Диагностика</a><a href="#prices">Цены</a><a href="#calculator">Калькулятор</a><a href="#contacts">Контакты</a></nav>
+    <div class="header-actions"><a class="header-phone" href="tel:+79213925813">+7 (921) 392-58-13</a>
+      <a class="btn primary header-call" href="tel:+79213925813"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3H4c-1 0-1 1-1 2 0 8 8 16 16 16 1 0 2 0 2-1v-4l-5-2-2 2a15 15 0 0 1-6-6l2-2-2-5z"/></svg> Позвонить мастеру</a>
+      <button id="menu-button" aria-controls="mobile-nav" aria-label="Открыть меню" aria-expanded="false"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+    </div>
+  </div><nav id="mobile-nav" aria-label="Мобильное меню" hidden><a href="#services">Услуги</a><a href="#diagnostics">Диагностика</a><a href="#prices">Цены</a><a href="#calculator">Калькулятор</a><a href="#contacts">Контакты</a></nav></div></header>
+  <main id="main">
+    <section class="hero-section w-full min-h-screen flex flex-col justify-center py-16 lg:py-24" aria-labelledby="hero-title"><div class="wrap max-w-[1400px] mx-auto px-4 md:px-8 hero">
+      <div class="hero-copy">
+        <h1 id="hero-title">Автосервис в Луге,<br><em>в который возвращаются.</em></h1>
+        <a class="address-chip" href="#contacts"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0z M14 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg> Старорусская ул., 13Г, Луга</a>
+        <p>От замены масла до кузовного ремонта. Выберите, что беспокоит, или обсудите автомобиль с мастером.</p>
+        <div class="buttons flex flex-wrap gap-3"><a class="btn primary" href="tel:+79213925813"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3H4c-1 0-1 1-1 2 0 8 8 16 16 16 1 0 2 0 2-1v-4l-5-2-2 2a15 15 0 0 1-6-6l2-2-2-5z"/></svg> Позвонить</a><a class="btn secondary" href="#services">Услуги и цены</a></div>
+      </div>
+      <div class="explorer">
+        <div class="blueprint"><div class="plate-title"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 5h10v10H3z M13 10h7v9h-9v-4"/></svg> Системы автомобиля</div>
+          <svg class="vehicle" viewBox="0 0 530 184" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="shell-metal" x2=".19" y2="1" gradientUnits="objectBoundingBox">
+              <stop stop-color="#f8f8f5"/><stop offset=".28" stop-color="#c5c5c2"/><stop offset=".53" stop-color="#888885"/><stop offset=".58" stop-color="#dcdcd9"/><stop offset="1" stop-color="#5f5f5c"/>
+            </linearGradient>
+            <linearGradient id="glass" x2="1" y2=".4"><stop stop-color="#6f6f6c"/><stop offset=".6" stop-color="#32322f"/><stop offset="1" stop-color="#5b5b58"/></linearGradient>
+          </defs>
+          <g stroke="#adadaa" stroke-width=".7" opacity=".5">
+            <path d="M27 160h474M32 156v8m464-8v8M124 41v126m282-126v126" stroke-dasharray="3 5"/>
+            <path d="M28 35h12m-6-6v12m451-6h12m-6-6v12"/>
+          </g>
+          <ellipse cx="266" cy="155" rx="225" ry="6" fill="#161613" opacity=".7"/>
+          <path d="m44 111 5-20 56-11 63-33q18-10 56-12 47-3 85 2 25 3 81 44 53 4 80 20l13 15-3 17-38 6q3-39-30-44-34-4-39 39l-212 1q3-32-21-40-38-14-47 34l-43-6-8-7z" fill="url(#shell-metal)" stroke="#e4e4e1" stroke-width="1.4"/>
+          <path d="m122 80 53-28q19-10 59-12 42-2 69 2 28 6 70 37l-112 5z" fill="url(#glass)" stroke="#e1e1de"/>
+          <path d="m188 47-18 35 7 1 17-38m54-5-10 43h8l8-43m49 4 42 36h8l-45-35" fill="#343431"/>
+          <g stroke="#676764" stroke-width="1.4"><path d="m170 84-11 13 8 35 68 1 4-48m15 1-5 47 86-1 13-37-3-12M49 103l111-12 209-4 81 9m-287 34 198-9"/><path d="m183 90 12-1m70 1 12-1" stroke-width="3"/></g>
+          <path d="m48 91 37-5-18 12-21 2z" fill="#d3d3d0"/><path d="m435 98 27 4 12 10-25-5z" fill="#f7f7f4"/>
+          <path d="m464 117 16-1-2 10-21 3z" fill="#32322f"/><path d="m336 77 10-7 11 2-1 6-13 3z" fill="#bcbcb9" stroke="#5f5f5c"/>
+          <g transform="translate(124 131)">
+            <circle r="29" fill="#1d1d1a" stroke="#a4a4a1"/><circle r="20" fill="#464643" stroke="#cbcbc8"/>
+            <path transform="rotate(0)" d="m-2-5-6-12 6 1 5 11" fill="#bdbdba"/><path transform="rotate(72)" d="m-2-5-6-12 6 1 5 11" fill="#bdbdba"/><path transform="rotate(144)" d="m-2-5-6-12 6 1 5 11" fill="#bdbdba"/><path transform="rotate(216)" d="m-2-5-6-12 6 1 5 11" fill="#bdbdba"/><path transform="rotate(288)" d="m-2-5-6-12 6 1 5 11" fill="#bdbdba"/>
+            <circle r="5" fill="#292926" stroke="#cbcbc8"/>
+          </g>
+          <g transform="translate(406 131)">
+            <circle r="29" fill="#1d1d1a" stroke="#a4a4a1"/><circle r="20" fill="#464643" stroke="#cbcbc8"/>
+            <path transform="rotate(0)" d="m-2-5-6-12 6 1 5 11" fill="#bdbdba"/><path transform="rotate(72)" d="m-2-5-6-12 6 1 5 11" fill="#bdbdba"/><path transform="rotate(144)" d="m-2-5-6-12 6 1 5 11" fill="#bdbdba"/><path transform="rotate(216)" d="m-2-5-6-12 6 1 5 11" fill="#bdbdba"/><path transform="rotate(288)" d="m-2-5-6-12 6 1 5 11" fill="#bdbdba"/>
+            <circle r="5" fill="#292926" stroke="#cbcbc8"/>
+          </g>
+          <g id="car-marker" transform="translate(403 85)">
+            <path d="M0 0v-19" stroke="#fff" stroke-width="2"/>
+            <circle r="4" fill="#fff"/>
+            <rect x="-16" y="-48" width="32" height="32" rx="9" fill="#047857" stroke="#b9e7d3"/>
+            <use id="marker-icon" x="-11" y="-43" width="22" height="22" href="#icon-engine" color="#fff"/>
+          </g>
+        </svg>
+        </div>
+        <div class="systems" role="group" aria-label="Выберите систему автомобиля">
+          <button type="button" class="system" aria-controls="system-panel" aria-pressed="true" data-icon="engine" data-point="403 85" data-description="Слышен стук или двигатель работает неровно?" data-detail="Запомните, на холодном или прогретом моторе появляется звук. Эта деталь пригодится мастеру.">Двигатель</button>
+          <button type="button" class="system" aria-controls="system-panel" aria-pressed="false" data-icon="electric" data-point="370 87" data-description="На панели появился индикатор или стартер крутит с трудом?" data-detail="Сфотографируйте индикатор и уточните, появилась ли ошибка сразу после запуска.">Электрика</button>
+          <button type="button" class="system" aria-controls="system-panel" aria-pressed="false" data-icon="suspension" data-point="138 104" data-description="На неровностях слышен глухой удар?" data-detail="Обратите внимание, с какой стороны слышен стук и меняется ли он при повороте.">Подвеска</button>
+          <button type="button" class="system" aria-controls="system-panel" aria-pressed="false" data-icon="brakes" data-point="402 131" data-description="При торможении появился скрип или дрожит педаль?" data-detail="Сообщите мастеру, когда возникает звук. Причину поможет определить осмотр колодок и дисков.">Тормоза</button>
+          <button type="button" class="system" aria-controls="system-panel" aria-pressed="false" data-icon="tires" data-point="124 145" data-description="На скорости вибрирует руль или неравномерно стирается протектор?" data-detail="Назовите размер шин с боковины колеса и расскажите, началась ли вибрация после смены резины.">Шины</button>
+          <button type="button" class="system" aria-controls="system-panel" aria-pressed="false" data-icon="exhaust" data-point="56 118" data-description="Звук выхлопа стал громче или под днищем что-то дребезжит?" data-detail="Для разговора с мастером отметьте, меняется ли шум при разгоне или на холостом ходу.">Выхлоп</button>
+        </div>
+        <div class="system-panel" id="system-panel"><div aria-live="polite"><h2 id="system-name">Двигатель</h2><p id="system-text">Слышен стук или двигатель работает неровно?</p></div>
+          <button id="system-more" aria-expanded="false" aria-controls="system-extra">Подробнее</button>
+          <p id="system-extra" hidden>Запомните, на холодном или прогретом моторе появляется звук. Эта деталь пригодится мастеру.</p>
+        </div>
+      </div>
+    </div></section>
+    <section id="bonuses" class="bonuses w-full py-16 lg:py-24" aria-labelledby="bonuses-title">
+      <div class="wrap max-w-[1400px] mx-auto px-4 md:px-8">
+        <header class="bonus-grid bonus-header grid md:grid-cols-2 items-end">
+          <div>
+            <p class="bonus-kicker">ПОСТОЯННЫЕ УСЛОВИЯ</p>
+            <h2 id="bonuses-title">Приятно, когда о вас подумали.</h2>
+          </div>
+          <p class="bonus-intro">Начните с нужного вашей машине. У двух работ есть простые условия, при которых вы за них не платите.</p>
+        </header>
+        <div class="bonus-grid bonus-offers grid lg:grid-cols-2">
+          <article class="bonus-offer bg-blue-50/50 rounded-2xl p-5 lg:p-8">
+            <p class="bonus-price"><strong>0 ₽</strong><span>за работу</span></p>
+            <div class="bonus-copy">
+              <h3>Замена масла и фильтра</h3>
+              <p>За работу при покупке моторного масла и масляного фильтра у нас. Оплачиваются расходники. Подберём масло по допускам двигателя и назовём стоимость заранее.</p>
+              <p class="bonus-note">Ориентир по времени — около 45 минут</p>
+              <a href="tel:+79213925813">Подобрать масло и записаться <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="bonus-offer bonus-suspension bg-emerald-50/50 rounded-2xl p-5 lg:p-8">
+            <p class="bonus-price"><strong>0 ₽</strong><span>при ремонте у нас</span></p>
+            <div class="bonus-copy">
+              <h3>Диагностика подвески</h3>
+              <p>Если ремонт по результатам проверки делаете у нас. Покажем люфты и износ, объясним, что требует внимания сейчас. Отдельная диагностика на подъёмнике — 1 000 ₽.</p>
+              <p class="bonus-note">Условие действует при последующем ремонте у нас</p>
+              <a href="tel:+79213925813">Записаться на проверку <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+        <div class="bonus-grid bonus-details grid md:grid-cols-2">
+          <div>
+            <p class="bonus-label">ЗАПЧАСТИ</p>
+            <h3>Под вашу машину и бюджет</h3>
+            <p>Подбираем оригинальные детали или проверенные аналоги от поставщиков. Цену согласуем до заказа. Со своими запчастями тоже можно — заранее уточним совместимость.</p>
+          </div>
+          <div>
+            <p class="bonus-label">ПОКА ИДЁТ РЕМОНТ</p>
+            <h3>Можно спокойно подождать</h3>
+            <p>Парковка у сервиса, зона отдыха, кафе, бесплатные Wi-Fi и кофе. Короткие работы удобно переждать на месте, а за длительным ремонтом следить в боте.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="services" class="services w-full min-h-screen flex flex-col justify-center py-16 lg:py-24"><div class="wrap max-w-[1400px] mx-auto px-4 md:px-8">
+      <div class="section-heading"><h2>От планового ТО<br>до сложного ремонта</h2><a class="text-link" href="#prices">Полный прайс-лист</a></div>
+      <div class="service-grid">
+        <a class="service-card" data-estimate="service-0" href="#calculator">
+          <svg aria-hidden="true" viewBox="0 0 28 28"><use href="#icon-to"/></svg>
+          <h3>Заправка автокондиционера</h3><span>2 500 ₽</span>
+        </a>
+        <a class="service-card" data-estimate="service-1" href="#calculator">
+          <svg aria-hidden="true" viewBox="0 0 28 28"><use href="#icon-oil"/></svg>
+          <h3>Б/у резина шины</h3><span>700 ₽</span>
+        </a>
+        <a class="service-card" data-estimate="service-2" href="#calculator">
+          <svg aria-hidden="true" viewBox="0 0 28 28"><use href="#icon-timing"/></svg>
+          <h3>Замена тормозных колодок</h3><span>1 000 ₽</span>
+        </a>
+        <a class="service-card" data-estimate="service-3" href="#calculator">
+          <svg aria-hidden="true" viewBox="0 0 28 28"><use href="#icon-suspension"/></svg>
+          <h3>Антикоррозийная обработка</h3><span>7 000 ₽</span>
+        </a>
+        <a class="service-card" data-estimate="service-4" href="#calculator">
+          <svg aria-hidden="true" viewBox="0 0 28 28"><use href="#icon-body"/></svg>
+          <h3>Шиномонтаж</h3><span>2 200 ₽</span>
+        </a>
+        <a class="service-card" data-estimate="service-5" href="#calculator">
+          <svg aria-hidden="true" viewBox="0 0 28 28"><use href="#icon-tires"/></svg>
+          <h3>Теплый гараж с авто подъемником</h3><span>600 ₽</span>
+        </a>
+      </div></div>
+    </section>
+    <section id="diagnostics" class="tinted w-full min-h-screen flex flex-col justify-center py-16 lg:py-24"><div class="wrap max-w-[1400px] mx-auto px-4 md:px-8">
+      <h2>Машина подаёт сигнал?<br><em>Поможем разобраться.</em></h2>
+      <div class="pair diagnostic-layout">
+        <div class="symptoms">
+          <div class="symptom-groups">
+            <fieldset><legend>Звуки и шумы</legend>
+              <label><input type="checkbox" id="engine_noise">Стук в двигателе</label>
+              <label><input type="checkbox" id="suspension_noise">Стук на неровностях</label>
+              <label><input type="checkbox" id="brake_squeal">Скрип при торможении</label>
+            </fieldset>
+            <fieldset><legend>Поведение на дороге</legend>
+              <label><input type="checkbox" id="steering_vibration">На скорости дрожит руль</label>
+              <label><input type="checkbox" id="brake_vibration">Вибрация при торможении</label>
+            </fieldset>
+            <fieldset><legend>Запах и дым</legend>
+              <label><input type="checkbox" id="exhaust_smell">Запах выхлопа в салоне</label>
+              <label><input type="checkbox" id="blue_smoke">Сизый дым из выхлопной трубы</label>
+            </fieldset>
+            <fieldset><legend>Лампы на панели</legend>
+              <label><input type="checkbox" id="check_engine">Горит Check Engine</label>
+              <label><input type="checkbox" id="abs_light">Горит индикатор ABS</label>
+            </fieldset>
+          </div>
+          <div class="symptom-controls">
+            <p>Выбрано: <span id="selected-count">0</span></p>
+            <button type="button" id="reset-symptoms">Сбросить</button>
+          </div>
+        </div>
+        <div class="diagnosis-card">
+          <h3>Что проверить</h3>
+          <div aria-live="polite">
+            <p id="diagnosis-placeholder">Выберите симптом</p>
+            <ul id="diagnosis-results"></ul>
+          </div>
+          <a href="tel:+79213925813" class="btn primary" id="diagnostic-book" hidden>Записаться</a>
+        </div>
+      </div></div>
+    </section>
+    <section id="calculator" class="calculator w-full min-h-screen flex flex-col justify-center py-16 lg:py-24"><div class="wrap max-w-[1400px] mx-auto px-4 md:px-8">
+      <h2>Сколько стоит ваш ремонт?</h2>
+      <div class="pair calculator-layout">
+        <div class="calc-inputs">
+          <h3><span>01 /</span> Ваш автомобиль и задача</h3>
+          <fieldset class="calc-vehicle"><legend>Тип автомобиля</legend>
+            <div class="vehicle-options">
+              <label><input type="radio" name="calc-vehicle" value="car">Легковой</label>
+              <label><input type="radio" name="calc-vehicle" value="crossover">Кроссовер</label>
+              <label><input type="radio" name="calc-vehicle" value="suv">Внедорожник</label>
+              <label><input type="radio" name="calc-vehicle" value="minivan">Минивэн</label>
+            </div>
+          </fieldset>
+          <div class="calc-field">
+            <label for="service-choice">Что нужно сделать</label>
+            <select id="service-choice"><option value="" disabled selected>Выберите услугу</option>
+              <option value="service-0">Заправка автокондиционера</option>
+              <option value="service-1">Б/у резина шины</option>
+              <option value="service-2">Замена тормозных колодок</option>
+              <option value="service-3">Антикоррозийная обработка</option>
+              <option value="service-4">Шиномонтаж</option>
+              <option value="service-5">Теплый гараж с авто подъемником</option>
+              <option value="service-6">Замена масла</option>
+              <option value="service-7">Защитная полировка кузова</option>
+              <option value="service-8">Химчистка салона</option></select>
+          </div>
+          <div class="calc-field" id="wheel-field" hidden>
+            <label for="wheel-choice">Размер колеса</label>
+            <select id="wheel-choice">
+              <option value="" disabled selected>Выберите размер</option>
+              <option>R12-R14</option><option>R15-R16</option><option>R17-R18</option>
+            </select>
+          </div>
+          <div class="calc-shortcuts"><p>Часто смотрят:</p><div><button type="button" data-estimate="service-0">Заправка автокондиционера</button><button type="button" data-estimate="service-1">Б/у резина шины</button><button type="button" data-estimate="service-2">Замена тормозных колодок</button></div></div>
+        </div>
+        <div class="estimate">
+          <h3><span>02 /</span> Ориентировочно</h3>
+          <div class="estimate-summary" aria-live="polite" aria-atomic="true">
+            <output id="estimate-value">Выберите параметры</output>
+            <p id="estimate-detail" hidden></p>
+          </div>
+          <div id="estimate-breakdown" hidden>
+            <dl class="estimate-params">
+              <div><dt>Тип автомобиля</dt><dd id="estimate-vehicle"></dd></div>
+              <div id="estimate-size-row"><dt>Размер</dt><dd id="estimate-size"></dd></div>
+              <div id="estimate-package"><dt>Комплекс</dt><dd>За 4 колеса</dd></div>
+            </dl>
+            <h4>От чего зависит итог:</h4>
+            <ul id="estimate-factors"></ul>
+            <p id="demo-rate">Расчёт по примерным ставкам демо.</p>
+          </div>
+          <div class="estimate-actions">
+            <a class="btn" href="https://yandex.ru/maps/org/avtomaks/156949365094/?ll=29.836806%2C58.724907&amp;z=14" target="_blank" rel="noopener">Адрес на карте</a>
+            <a class="btn" href="tel:+79213925813">Позвонить мастеру</a>
+          </div>
+        </div>
+      </div>
+    </div></section>
+    <section id="prices" class="price-section w-full min-h-screen flex flex-col justify-center py-16 lg:py-24"><div class="wrap max-w-[1400px] mx-auto px-4 md:px-8">
+      <div class="price-head"><h2>Полный прайс-лист</h2>
+        <label class="search"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M16 16l5 5 M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"/></svg><input type="search" id="price-search" aria-label="Поиск по услугам" placeholder="Найти услугу"></label>
+      </div>
+      <div class="price-list">
+        <details class="price-group" open><summary>Все услуги</summary><table aria-label="Все услуги"><thead><tr><th scope="col">Услуга</th><th scope="col">Стоимость</th></tr></thead><tbody><tr data-service="service-0"><th scope="row">Заправка автокондиционера</th><td>2 500 ₽</td></tr><tr data-service="service-1"><th scope="row">Б/у резина шины</th><td>700 ₽</td></tr><tr data-service="service-2"><th scope="row">Замена тормозных колодок</th><td>1 000 ₽</td></tr><tr data-service="service-3"><th scope="row">Антикоррозийная обработка</th><td>7 000 ₽</td></tr><tr data-service="service-4"><th scope="row">Шиномонтаж</th><td>2 200 ₽</td></tr><tr data-service="service-5"><th scope="row">Теплый гараж с авто подъемником</th><td>600 ₽</td></tr><tr data-service="service-6"><th scope="row">Замена масла</th><td>1 100 ₽</td></tr><tr data-service="service-7"><th scope="row">Защитная полировка кузова</th><td>3 000 ₽</td></tr><tr data-service="service-8"><th scope="row">Химчистка салона</th><td>5 000 ₽</td></tr></tbody></table></details>
+      </div>
+      <div id="empty-search" hidden role="status">Услуга не найдена. <button id="reset-search">Сбросить поиск</button></div>
+      <p class="fine">Цены указаны по данным из карточки компании. Для услуг без цены уточняйте стоимость по телефону.</p>
+    </div></section>
+    <section class="tinted w-full py-16 lg:py-24"><div class="wrap max-w-[1400px] mx-auto px-4 md:px-8"><h2>Почему мы</h2>
+      <div class="reasons">
+        <article class="surface reason"><span class="check"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><h3>Без выходных</h3><p>Можно запланировать визит и в будни, и на выходные. Сервис открыт с 9 до 20.</p></article>
+        <article class="surface reason"><span class="check"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><h3>Согласование работ</h3><p>До начала ремонта мастер обсуждает с вами перечень работ.</p></article>
+        <article class="surface reason"><span class="check"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><h3>Гарантия на работы</h3><p>Условия для конкретного ремонта фиксируются в заказ-наряде.</p></article>
+      </div></div>
+    </section>
+    <section id="contacts" class="tinted w-full py-16 lg:py-24"><div class="wrap max-w-[1400px] mx-auto px-4 md:px-8 contacts">
+      <div><h2>Как нас найти</h2><address>Луга<br>Старорусская ул., 13Г, Луга</address>
+        <p>Ежедневно 09:00-20:00</p><a class="contact-phone" href="tel:+79213925813">+7 (921) 392-58-13</a>
+        <a class="btn secondary" href="https://yandex.ru/maps/org/avtomaks/156949365094/?ll=29.836806%2C58.724907&amp;z=14" target="_blank" rel="noopener">Открыть на карте</a></div>
+      <iframe src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D1%82%D0%B0%D1%80%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB.%2C%2013%D0%93%2C%20%D0%9B%D1%83%D0%B3%D0%B0&amp;z=16" width="100%" height="400" frameborder="0" class="rounded-2xl shadow-sm" loading="lazy" title="Карта: Автомакс"></iframe>
+    </div></section>
+  </main>
+  <footer class="w-full py-16"><div class="wrap max-w-[1400px] mx-auto px-4 md:px-8 footer-row"><a href="#top" class="brand" aria-label="Автомакс — на главную"><svg viewBox="0 0 36 32" aria-hidden="true"><path d="M10 2h7L7 30H0Zm10 7h7l-7.5 21h-7Zm10 7h6l-5 14h-6Z"/></svg><span>Автомакс<small></small></span></a><span>Демо-концепт, не официальный сайт</span><a href="#top">Наверх</a></div></footer>
+  <script>
+    const one = selector => document.querySelector(selector);
+    const all = selector => Array.from(document.querySelectorAll(selector));
+
+    const menuButton = one('#menu-button');
+    const mobileNav = one('#mobile-nav');
+    function setMenu(open) {
+      mobileNav.hidden = !open;
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    }
+    menuButton.addEventListener('click', () => setMenu(mobileNav.hidden));
+    mobileNav.addEventListener('click', () => setMenu(false));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !mobileNav.hidden) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
+    matchMedia('(min-width: 60rem)').addEventListener('change', () => setMenu(false));
+
+    const systemButtons = all('.system');
+    const more = one('#system-more');
+    function chooseSystem(button) {
+      for (const item of systemButtons) item.setAttribute('aria-pressed', String(item === button));
+      one('#system-name').textContent = button.textContent;
+      one('#system-text').textContent = button.dataset.description;
+      one('#system-extra').textContent = button.dataset.detail;
+      one('#system-extra').hidden = true;
+      more.setAttribute('aria-expanded', 'false');
+      more.textContent = 'Подробнее';
+      one('#marker-icon').setAttribute('href', '#icon-' + button.dataset.icon);
+      one('#car-marker').setAttribute('transform', 'translate(' + button.dataset.point + ')');
+    }
+    for (const button of systemButtons) button.addEventListener('click', () => chooseSystem(button));
+    more.addEventListener('click', () => {
+      const extra = one('#system-extra');
+      extra.hidden = !extra.hidden;
+      more.setAttribute('aria-expanded', String(!extra.hidden));
+      more.textContent = extra.hidden ? 'Подробнее' : 'Свернуть';
+    });
+
+    // Prices and names are read from this business's CSV catalogue above.
+    const rows = all('tr[data-service]');
+    const serviceSelect = one('#service-choice');
+    const catalog = new Map();
+    for (const row of rows) catalog.set(row.dataset.service, { title: row.cells[0].textContent, price: row.cells[1].textContent.trim() });
+    function updateEstimate() {
+      const key = serviceSelect.value;
+      const vehicle = one('input[name="calc-vehicle"]:checked');
+      const complete = Boolean(key && vehicle);
+      one('#wheel-field').hidden = true;
+      one('#estimate-breakdown').hidden = !complete;
+      one('#estimate-detail').hidden = !complete;
+      one('#estimate-value').textContent = complete ? (catalog.get(key)?.price || 'Цена не указана') : 'Выберите параметры';
+      one('#estimate-detail').textContent = complete ? catalog.get(key).title : '';
+      one('#estimate-vehicle').textContent = complete ? vehicle.labels[0].textContent : '';
+      one('#estimate-size-row').hidden = true;
+      one('#estimate-package').hidden = true;
+      one('#demo-rate').hidden = true;
+      one('#estimate-factors').replaceChildren();
+    }
+    one('.calc-inputs').addEventListener('change', updateEstimate);
+    updateEstimate();
+    for (const shortcut of all('[data-estimate]')) shortcut.addEventListener('click', () => {
+      const key = shortcut.dataset.estimate;
+      if (!catalog.has(key)) return;
+      serviceSelect.value = key;
+      updateEstimate();
+    });
+
+    const symptomsData = {
+      engine_noise: {
+        title: 'Двигатель', desc: 'Проверьте уровень масла. Отметьте, когда слышен стук — при холодном пуске или после прогрева.', price: ''
+      },
+      suspension_noise: {
+        title: 'Диагностика подвески', desc: 'Стук на неровностях — повод проверить шарниры, втулки и крепления амортизаторов.', price: ''
+      },
+      brake_squeal: {
+        title: 'Тормозные колодки', desc: 'При скрипе стоит проверить толщину колодок и состояние поверхности дисков.', price: ''
+      },
+      steering_vibration: {
+        title: 'Колёса и шины', desc: 'Начните с проверки шин, дисков и балансировки колёс. Запомните, на какой скорости появляется дрожь.', price: ''
+      },
+      brake_vibration: {
+        title: 'Тормозная система', desc: 'Если педаль или руль дрожит при торможении, стоит проверить тормозные диски и колодки.', price: ''
+      },
+      exhaust_smell: {
+        title: 'Герметичность выхлопа', desc: 'Запах выхлопа в салоне — повод проверить соединения выпускной системы на утечки.', price: ''
+      },
+      blue_smoke: {
+        title: 'Расход масла', desc: 'Сизый дым может появиться, когда масло попадает в цилиндры. Уточните, как часто приходится доливать масло.', price: ''
+      },
+      check_engine: {
+        title: 'Система управления двигателем', desc: 'Считайте коды ошибок. Они помогут определить, какой узел проверить первым.', price: ''
+      },
+      abs_light: {
+        title: 'Антиблокировочная система', desc: 'Проверку стоит начать с кодов ошибок ABS, датчиков скорости колёс и их проводки.', price: ''
+      }
+    };
+    const symptoms = all('.symptoms input[type="checkbox"]');
+    const diagnosisResults = one('#diagnosis-results');
+    function updateSymptoms() {
+      const selectedIds = symptoms.filter(input => input.checked).map(input => input.id);
+      one('#selected-count').textContent = selectedIds.length;
+      one('#diagnosis-placeholder').hidden = selectedIds.length > 0;
+      one('#diagnostic-book').hidden = selectedIds.length === 0;
+      diagnosisResults.replaceChildren();
+      for (const id of selectedIds) {
+        const { title, desc, price } = symptomsData[id];
+        const item = document.createElement('li');
+        const heading = document.createElement('h4');
+        heading.textContent = title;
+        const description = document.createElement('p');
+        description.textContent = desc;
+        item.append(heading, description);
+        if (price) {
+          const amount = document.createElement('strong');
+          amount.textContent = price;
+          item.append(amount);
+        }
+        diagnosisResults.append(item);
+      }
+    }
+    for (const symptom of symptoms) symptom.addEventListener('change', updateSymptoms);
+    one('#reset-symptoms').addEventListener('click', () => {
+      for (const symptom of symptoms) symptom.checked = false;
+      updateSymptoms();
+    });
+    updateSymptoms();
+
+    const groups = all('.price-group');
+    const search = one('#price-search');
+    let previousOpen = null;
+    function filterPrices() {
+      const normalize = value => value.toLocaleLowerCase('ru').replaceAll('ё', 'е').trim();
+      const query = normalize(search.value);
+      if (query && !previousOpen) previousOpen = groups.map(group => group.open);
+      let matches = 0;
+      groups.forEach((group, index) => {
+        const category = normalize(group.querySelector('summary').textContent);
+        let visibleCount = 0;
+        for (const row of group.querySelectorAll('tbody tr')) {
+          row.hidden = !(category + ' ' + normalize(row.textContent)).includes(query);
+          if (!row.hidden) visibleCount++;
+        }
+        group.hidden = !visibleCount;
+        if (query) group.open = Boolean(visibleCount);
+        else if (previousOpen) group.open = previousOpen[index];
+        matches += visibleCount;
+      });
+      if (!query) previousOpen = null;
+      one('#empty-search').hidden = matches > 0;
+    }
+    search.addEventListener('input', filterPrices);
+    one('#reset-search').addEventListener('click', () => {
+      search.value = '';
+      filterPrices();
+      search.focus();
+    });
+    const progress = one('#reading-progress');
+    let framePending = false;
+    function paintProgress() {
+      const range = document.documentElement.scrollHeight - innerHeight;
+      progress.style.transform = 'scaleX(' + (range > 0 ? Math.min(1, Math.max(0, scrollY / range)) : 0) + ')';
+      framePending = false;
+    }
+    function scheduleProgress() {
+      if (framePending) return;
+      framePending = true;
+      requestAnimationFrame(paintProgress);
+    }
+    addEventListener('scroll', scheduleProgress, { passive: true });
+    addEventListener('resize', scheduleProgress);
+    new ResizeObserver(scheduleProgress).observe(document.body);
+    paintProgress();
+
+    const dot = one('#cursor-dot');
+    const mouseMode = matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+    function restoreCursor() {
+      dot.hidden = true;
+      document.body.classList.remove('custom-cursor');
+    }
+    document.addEventListener('pointermove', event => {
+      if (!mouseMode.matches || event.pointerType !== 'mouse' || event.target.closest('input,select,iframe')) {
+        restoreCursor();
+        return;
+      }
+      dot.style.transform = 'translate3d(' + event.clientX + 'px,' + event.clientY + 'px,0)';
+      dot.classList.toggle('active', Boolean(event.target.closest('a,button,summary,label')));
+      dot.hidden = false;
+      document.body.classList.add('custom-cursor');
+    }, { passive: true });
+    document.addEventListener('pointerout', event => {
+      if (!event.relatedTarget || event.relatedTarget.closest?.('iframe')) restoreCursor();
+    });
+    addEventListener('blur', restoreCursor);
+    document.addEventListener('keydown', restoreCursor);
+    mouseMode.addEventListener('change', restoreCursor);
+  </script>
+</body>
+</html>
